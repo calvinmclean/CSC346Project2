@@ -41,6 +41,7 @@
 body
 {
     background-image: url("./images/paw-background.jpg");
+	font-family: "Arial";
 }
 
 img
@@ -52,9 +53,10 @@ img
 {
 	background-color:#E6C6F5;
         padding: 5%;
-	width: 90%;
+	width: 95%;
 	float: left;
 	border-radius: 25px;
+	text-align: center;
 }
 
 .home-text
@@ -66,6 +68,38 @@ img
 	width: 75%;
 	border-radius: 25px;
 	text-align: center;
-	font-family: "Arial";
 	font-size: 16px;
+	text-align: center;
+}
+
+.browse-box
+{
+	background-color:#E6C6F5;
+        padding-left: 5%;
+	padding-bottom: 5%;
+	width: 95%;
+	float: left;
+	border-radius: 25px;
+	text-align: center;
+}
+
+.one-corgi
+{
+	background-color:#FFFFFF;
+	float: left;
+	padding: 3%;
+	margin-left: 7.5%;
+	width: 80%;
+	border-radius: 25px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.corgi-info
+{
+	float: left;
+	font-size: 16px;
+	padding-left: 3%;
+	margin: 0px;
+	text-align: left;
 }
