@@ -76,7 +76,6 @@ img
 .browse-box
 {
 	background-color:#E6C6F5;
-        padding-left: 5%;
 	width: 95%;
 	float: left;
 	border-radius: 25px;
@@ -139,4 +138,52 @@ img
 	font-size: 30px;
 	margin-top: 5px;
 	right-margin: 3px;
+}
+
+.btn-file 
+{
+    
+	position: relative;
+    
+	overflow: hidden;
+
+}
+
+
+.btn-file input[type=file] 
+{
+     
+	top: 0;
+    
+	right: 0;
+    
+	width: 70%;
+    
+	min-height: 100%;
+    
+	font-size: 100px;
+    
+	text-align: right;
+    
+	filter: alpha(opacity=0);
+    
+	opacity: 0;
+    
+	outline: none;
+    
+	background: white;
+    
+	cursor: inherit;
+    
+	display: block;
+
+}
+
+
+
+#img-upload
+{
+    
+	width: 100%;
+
 }
