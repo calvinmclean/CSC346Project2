@@ -12,12 +12,13 @@
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top">
   <div class="container-fluid">
+  	<div class="navbar-left"><img src="./images/pawprint-logo.png" height="50px"></div>
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Corgi Marketplace</a>
+      <div class="navbar-brand">Corgi Marketplace</div>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="./home.html">Home</a></li>
-      <li><a href="#">Browse Corgis</a></li>
+      <li><a href="./browse.html">Browse Corgis</a></li>
       <li><a href="#">Buy a Corgi</a></li>
       <li><a href="./list.html">List a Corgi</a></li>
     </ul>
@@ -78,13 +79,10 @@
 					<b>Contact: </b>lshoemake@email.arizona.edu
 					</div>
 			</div>
-			
-			
-			
 		</div>
 	</div>
 </div>
-
+</body>
 <script>
 
 function favorite(id)
@@ -99,13 +97,5 @@ function unfavorite(id)
 	heart.innerHTML = '<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite('+id+')"></span>'
 }
 
-</script>
-</body>
-
-<script>
-browseCorgis()
-{
-    alert();
-}
 </script>
 </html>
