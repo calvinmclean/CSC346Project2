@@ -33,20 +33,73 @@
 		<div class="browse-box">
 			<h1>Browse All Corgis</h1>
 			<div class="one-corgi">
-					<img src="./images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%">
-					<div class="corgi-info">
-						<b>Name:</b> Spooky<br>
-						<b>Gender:</b> M <br>
-						<b>Age:</b> 10 months <br>
-						<b>Coloring:</b> Sable <br>
-						<b>Location:</b> Tucson, Arizona <br>
-						<b>Owner:</b> Laura Shoemake
+					<div class="favorite" id="favorite1">
+					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite(1);"></span>
 					</div>
-				
+					<img src="./images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+					<div class="corgi-info">
+						<b>Name: </b>Spooky<br>
+						<b>Gender: </b>M <br>
+						<b>Age: </b>10 months <br>
+						<b>Coloring: </b>Sable <br>
+						<b>Location: </b>Tucson, Arizona <br>
+						<b>Owner: </b>Laura Shoemake
+					</div>
+					<div class="corgi-description">
+						<b>Description:</b><br>
+						Spooky is a cute and friendly puppy! He loves playing with other dogs and making new friends. His favorite food is candy corn and his favorite holiday is Halloween! If you would like to give Spooky a new home, please send us a message.
+					</div>
+					<div style="float:left;text-align:left;margin-bottom:2%">
+					<b>Price: </b>$3000<br>
+					<b>Contact: </b>lshoemake@email.arizona.edu
+					</div>
 			</div>
+			
+			
+			<div class="one-corgi">
+					<div class="favorite" id="favorite2">
+					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite(2);"></span>
+					</div>
+					<img src="./images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+					<div class="corgi-info">
+						<b>Name: </b>Spooky<br>
+						<b>Gender: </b>M <br>
+						<b>Age: </b>10 months <br>
+						<b>Coloring: </b>Sable <br>
+						<b>Location: </b>Tucson, Arizona <br>
+						<b>Owner: </b>Laura Shoemake
+					</div>
+					<div class="corgi-description">
+						<b>Description:</b><br>
+						Spooky is a cute and friendly puppy! He loves playing with other dogs and making new friends. His favorite food is candy corn and his favorite holiday is Halloween! If you would like to give Spooky a new home, please send us a message.
+					</div>
+					<div style="float:left;text-align:left;margin-bottom:2%">
+					<b>Price: </b>$3000<br>
+					<b>Contact: </b>lshoemake@email.arizona.edu
+					</div>
+			</div>
+			
+			
+			
 		</div>
 	</div>
 </div>
+
+<script>
+
+function favorite(id)
+{
+	var heart = document.getElementById("favorite"+id);
+	heart.innerHTML = '<span class="glyphicon glyphicon-heart" style="color:red;" onclick="unfavorite('+id+')"></span>'
+}
+
+function unfavorite(id)
+{
+	var heart = document.getElementById("favorite"+id);
+	heart.innerHTML = '<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite('+id+')"></span>'
+}
+
+</script>
 </body>
 
 <script>
