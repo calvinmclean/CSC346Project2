@@ -1,53 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Corgi Marketplace</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-custom navbar-fixed-top">
-  <div class="container-fluid">
-  	<div class="navbar-left"><img src="./images/pawprint-logo.png" height="50px"></div>
-    <div class="navbar-header">
-      <div class="navbar-brand">Corgi Marketplace</div>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="./home.html">Home</a></li>
-      <li><a href="./browse.html">Browse Corgis</a></li>
-      <li><a href="#">Buy a Corgi</a></li>
-      <li><a href="./list.html">List a Corgi</a></li>
-    </ul>
-    
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+{% extends 'base.html' %}
+
+{% block content %}
 <div id="page" class="page">
 	<div class="home">
 		<div class="list-box">
 			<h1>List a Corgi</h1>
-			<form class="form-horizontal" action="#" method="POST">
+			<form class="form-horizontal" action="{% url 'add_corgi' %}" method="POST">
   				<div class="form-group">
     				<label class="control-label col-sm-3" for="name">Corgi Name:</label>
     				<div class="col-sm-4">
-      					<input class="form-control" id="corgi-name" placeholder="Enter corgi name" required>
+      					<input name="name" class="form-control" id="corgi-name" placeholder="Enter corgi name" required>
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-3" for="gender">Gender:</label>
-    				<div class="col-sm-4"> 
+    				<div class="col-sm-4">
       					<div class="radio-inline">
-  							<label><input type="radio" name="optradio" checked="checked">Male</label>
+  							<label><input type="radio" name="gender" checked="checked">Male</label>
 						</div>
 						<div class="radio-inline">
- 							 <label><input type="radio" name="optradio">Female</label>
+ 							 <label><input type="radio" name="gender">Female</label>
 						</div>
     				</div>
   				</div>
@@ -55,19 +27,19 @@
   					<label class="control-label col-sm-3" for="age">Age:</label>
     				<div class="row">
     					<div class="col-sm-2">
-    					  <input type="number" class="form-control" min="0" max="12" required>
+    					  <input name="years" type="number" class="form-control" min="0" max="12" required>
     					  Years
     					</div>
    						<div class="col-sm-2">
-      						<input type="number" class="form-control" min="0" required>
+      						<input name="months" type="number" class="form-control" min="0" required>
       						Months
     					</div>
   					</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-3" for="coloring">Coloring:</label>
-    				<div class="col-sm-4"> 
-      					<select class="form-control" id="corgi-coloring" required>
+    				<div class="col-sm-4">
+      					<select name="coloring" class="form-control" id="corgi-coloring" required>
       						<option value="" selected disabled hidden>Select coloring</option>
         					<option>Red</option>
         					<option>Red-Headed Tricolor</option>
@@ -79,13 +51,13 @@
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-3" for="location">Location:</label>
-    				<div class="col-sm-4"> 
+    				<div class="col-sm-4">
       					<div class="row">
     						<div class="col-sm-7">
-    					 		<input class="form-control" id="corgi-city" placeholder="Enter city" required>
+    					 		<input name="city" class="form-control" id="corgi-city" placeholder="Enter city" required>
     						</div>
    							<div class="col-sm-9">
-      							<select class="form-control" id="corgi-state" required>
+      							<select name="state" class="form-control" id="corgi-state" required>
       								<option value="" selected disabled hidden>Select state</option>
 								     <option value="AL">Alabama</option>
 									<option value="AK">Alaska</option>
@@ -146,7 +118,7 @@
 			    <div class="form-group">
     				<label class="control-label col-sm-3" for="description">Description:</label>
     				<div class="col-sm-5">
-    					<textarea class="form-control" id="corgi-description" rows="5" required></textarea>
+    					<textarea name="description" class="form-control" id="corgi-description" rows="5" required></textarea>
     				</div>
   				</div>
   				<div class="form-group">
@@ -157,35 +129,34 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="listing">For sale?</label>
-    				<div class="col-sm-3"> 
+    				<div class="col-sm-3">
       					<div class="radio-inline">
   							<label><input type="radio" name="listradio" onclick="showPrice()" id="yesPrice">Yes</label>
 						</div>
 						<div class="radio-inline">
  							 <label><input type="radio" name="listradio" checked="checked" onclick="showPrice()" id="noPrice">No</label>
-						</div> 
+						</div>
     				</div>
 				</div>
 				<div class="form-group" style="visibility:hidden;" id="price">
 					<label class="control-label col-sm-3" for="price">Price: </label>
-    				<div class="col-sm-3"> 
-      					<input type="number" class="form-control" min="0" id="priceNum" placeholder="Enter a price">
+    				<div class="col-sm-3">
+      					<input name="price" type="number" class="form-control" min="0" id="priceNum" placeholder="Enter a price">
     				</div>
 				</div>
-  				<div class="form-group"> 
+  				<div class="form-group">
     				<div class="col-sm-offset-3 col-sm-2">
       					<button type="submit" class="btn btn-default">Submit</button>
     				</div>
   				</div>
   			</form>
-		</div>	
+		</div>
 		<div class="list-instruction-box">
 		<h1>This is some info about listing</h1>
 		hello
 		</div>
 	</div>
 </div>
-</body>
 
 <script>
 function showPrice()
@@ -193,13 +164,13 @@ function showPrice()
 	var yes = document.getElementById("yesPrice");
 	var price = document.getElementById("price");
 	var priceNum = document.getElementById("priceNum");
-	
+
 	if(yes.checked)
 	{
 		price.style.visibility = 'visible';
 		priceNum.setAttribute("required", "");
 	}
-	
+
 	else
 	{
 		price.style.visibility = 'hidden';
@@ -207,4 +178,4 @@ function showPrice()
 	}
 }
 </script>
-</html>
+{% endblock %}

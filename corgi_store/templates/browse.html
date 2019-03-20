@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="page" class="page">
+	<div class="home">
+		<div class="browse-box">
+			<h1>{{ title }}</h1>
+      {% for corgi in corgis %}
+			<div class="one-corgi">
+					<div class="favorite" id="favorite{{ corgi.id }}">
+					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ corgi.id }});"></span>
+					</div>
+					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+					<div class="corgi-info">
+						<b>Name: </b>{{ corgi.name }}<br>
+						<b>Gender: </b>{{ corgi.gender }} <br>
+						<b>Age: </b>{{ corgi.age_years }} years, {{ corgi.age_months }} months <br>
+						<b>Coloring: </b>{{ corgi.coloring }} <br>
+						<b>Location: </b>{{ corgi.city }}, {{ corgi.state }} <br>
+						<b>Owner: </b>{{ corgi.owner.first_name }} {{ corgi.owner.last_name }}
+					</div>
+					<div class="corgi-description">
+						<b>Description:</b><br>
+            {{ corgi.description }}
+					</div>
+					<div style="float:left;text-align:left;margin-bottom:2%">
+          {% if price %}
+					<b>Price: </b>${{ corgi.price }}<br>
+					<b>Contact: </b>{{ corgi.owner.email }}
+          {% endif %}
+					</div>
+			</div>
+      {% endfor %}
+		</div>
+	</div>
+</div>
+
+<script>
+
+function favorite(id)
+{
+	var heart = document.getElementById("favorite"+id);
+	heart.innerHTML = '<span class="glyphicon glyphicon-heart" style="color:red;" onclick="unfavorite('+id+')"></span>'
+}
+
+function unfavorite(id)
+{
+	var heart = document.getElementById("favorite"+id);
+	heart.innerHTML = '<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite('+id+')"></span>'
+}
+
+</script>
+
+<script>
+browseCorgis()
+{
+    alert();
+}
+</script>
+{% endblock %}

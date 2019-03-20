@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Corgi Marketplace</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-left"><img src="/static/images/pawprint-logo.png" height="50px"></div>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'home' %}">Corgi Marketplace</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'browse_corgis' %}">Browse Corgis</a></li>
+      <li><a href="{% url 'buy_corgi' %}">Buy a Corgi</a></li>
+      <li><a href="{% url 'list_corgi' %}">List a Corgi</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
