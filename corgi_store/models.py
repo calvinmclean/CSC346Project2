@@ -1,7 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
-# Create your models here.
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    def save(self, commit=True):
+        user = super(SignUpForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.username = user.email
+        if commit:
+            user.save()
+        return user
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'password1', 'password2', )
+
 class CorgiManager(models.Manager):
     def create_corgi(self, name, **kwargs):
         return self.create(name, **kwargs)

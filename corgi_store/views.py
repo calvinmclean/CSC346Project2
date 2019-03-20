@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import Corgi
+from django.contrib.auth import login, authenticate
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -40,4 +41,18 @@ def add_corgi(request):
     # curl --data "name=spooky&age=3&gender=M&coloring=sable&location=tucson&description=cool&price=69000" http://127.0.0.1:8000/create_corgi/
     
 def sign_up(request):
-    return render(request, 'sign_up.html')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form.cleaned_data)
+            username = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            user.username = username
+            user.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'sign_up.html', {'form': form})

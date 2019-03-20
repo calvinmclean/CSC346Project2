@@ -6,41 +6,9 @@
 		<div class="sign-up-box">
       		<h1>Sign Up</h1>
       		<form method="post" class="form-horizontal">
-		  		<div class="form-group">
-					<label class="control-label col-sm-4" for="name">Name:</label>
-					<div class="row">
-						<div class="col-sm-3">
-						  <input name="first-name" class="form-control" placeholder="Enter first name" required>
-						</div>
-						<div class="col-sm-3">
-							<input name="last-name" class="form-control" placeholder="Enter last name" required>
-						</div>
-					</div>
-				</div>	
-  				<div class="form-group">
-    				<label class="control-label col-sm-4" for="name">Email:</label>
-    				<div class="col-sm-5">
-      					<input type = "email" name="email" class="form-control" id="email" placeholder="Enter email address" required>
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-4" for="password1">Password:</label>
-    				<div class="col-sm-5">
-      					<input type = "password" name="password1" class="form-control" id="password1" placeholder="Enter password" required>
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-4" for="password2">Reenter Password:</label>
-    				<div class="col-sm-5">
-      					<input type = "password" name="password2" class="form-control" id="password2" placeholder="Reenter password" required>
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<div class="col-sm-offset-3 col-sm-4">
-      					<button type="submit" class="btn btn-default">Sign up</button>
-    				</div>
-  				</div>
-     		 </form>
+			{{ form.as_p }}
+			<button type="submit">Sign up</button>
+     		</form>
 		</div>
 	</div>
 </div>
