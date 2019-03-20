@@ -38,3 +38,6 @@ def add_corgi(request):
     )
     return HttpResponse("Successfully added Corgi\n{}\n".format(corgi))
     # curl --data "name=spooky&age=3&gender=M&coloring=sable&location=tucson&description=cool&price=69000" http://127.0.0.1:8000/create_corgi/
+    
+def sign_up(request):
+    return render(request, 'sign_up.html')

@@ -9,6 +9,7 @@ urlpatterns = [
     path('corgi/buy/', views.buy_corgi, name='buy_corgi'),
     path('list_corgi/', views.list_corgi, name='list_corgi'),
     path('add_corgi/', views.add_corgi, name='add_corgi'),
+    path('sign_up/', views.sign_up, name='sign_up'),
 ]
 
 # TODO: change buy_corgi to sale_corgis

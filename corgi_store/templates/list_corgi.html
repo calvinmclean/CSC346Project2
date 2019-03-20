@@ -144,6 +144,12 @@
       					<input name="price" type="number" class="form-control" min="0" id="priceNum" placeholder="Enter a price">
     				</div>
 				</div>
+				<div class="form-group" style="visibility:hidden;" id="contact">
+					<label class="control-label col-sm-3" for="contact">Contact info: </label>
+    				<div class="col-sm-5">
+      					<textarea name="contact" class="form-control" id="corgi-contact" rows="2"></textarea>
+    				</div>
+				</div>
   				<div class="form-group">
     				<div class="col-sm-offset-3 col-sm-2">
       					<button type="submit" class="btn btn-default">Submit</button>
@@ -164,17 +170,23 @@ function showPrice()
 	var yes = document.getElementById("yesPrice");
 	var price = document.getElementById("price");
 	var priceNum = document.getElementById("priceNum");
+	var contact = document.getElementById("contact");
+	var corgiContact = document.getElementById("corgi-contact");
 
 	if(yes.checked)
 	{
 		price.style.visibility = 'visible';
+		contact.style.visibility = 'visible';
 		priceNum.setAttribute("required", "");
+		corgiContact.setAttribute("required", "");
 	}
 
 	else
 	{
 		price.style.visibility = 'hidden';
+		contact.style.visibility = 'hidden';
 		priceNum.removeAttribute("required");
+		corgiContact.removeAttribute("required");
 	}
 }
 </script>
