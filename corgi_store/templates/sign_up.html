@@ -9,27 +9,25 @@
 				{% csrf_token %}
 			    {% for field in form %}
 			      <div class="form-group">
-			      <div class="row">
-			      	<div class= "col-sm-3">
-			      	
-			        {{ field.label_tag }}
-			        </div>
-			        <div class="col-sm-6">
-			        {{ field }}
-			        
-			        {% if field.help_text %}
-			          <p><small style="color: grey;">{{ field.help_text }}</small></p>
-			        {% endif %}
-			        {% for error in field.errors %}
-			          <p style="color: red">{{ error }}</p>
-			        {% endfor %}
-		</div>
-			 	</div>
+			      	<div class="row">
+				      	<div class= "col-sm-3">
+					        {{ field.label_tag }}
+				        </div>
+				        <div class="col-sm-6">
+				        	{{ field }}
+					        {% if field.help_text %}
+					          <p><small style="color: grey;">{{ field.help_text }}</small></p>
+					        {% endif %}
+					        {% for error in field.errors %}
+					          <p style="color: red">{{ error }}</p>
+					        {% endfor %}
+						</div>
+				 	</div>
 			    </div>
 			    {% endfor %}
 			    <div class="form-group">
 			    	<div class="col-sm-offset-3 col-sm-2">
-			    	<button type="submit" class="btn btn-default">Sign up</button>	
+			    		<button type="submit" class="btn btn-default">Sign up</button>	
 			    	</div>
 			    </div>
      		</form>
