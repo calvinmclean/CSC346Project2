@@ -12,7 +12,7 @@ def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
 
 def browse_corgis(request):
-    return render(request, 'browse.html', {'corgis': Corgi.objects.all()})
+    return render(request, 'browse.html', {'corgis': Corgi.objects.all(), 'user': request.user})
 
 def buy_corgi(request):
     return render(request, 'buy.html', {'listings': Listing.objects.all()})
