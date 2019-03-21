@@ -1,7 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
-# Create your models here.
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    def save(self, commit=True):
+        user = super(SignUpForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.username = user.email
+        if commit:
+            user.save()
+        return user
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'password1', 'password2', )
+
 class CorgiManager(models.Manager):
     def create_corgi(self, name, **kwargs):
         return self.create(name, **kwargs)
@@ -22,7 +40,6 @@ class Corgi(models.Model):
     coloring = models.CharField(max_length=5, choices=COLOR_CHOICES, default='red')
     city = models.CharField(max_length=120)
     state = models.CharField(max_length=120)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=300)
     objects = CorgiManager()
 
@@ -31,3 +48,9 @@ class Corgi(models.Model):
 
     def __repr__(self):
         return "<Corgi: {}>".format(' '.join(["{}='{}'".format(k,v) for k,v in vars(self).items() if k != '_state']))
+
+class Listing(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    corgi = models.ForeignKey(Corgi, on_delete=models.CASCADE)
+    price = models.IntegerField()
+    contact = models.CharField(max_length=300)

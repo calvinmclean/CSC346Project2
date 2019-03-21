@@ -5,7 +5,7 @@
 	<div class="home">
 		<div class="list-box">
 			<h1>List a Corgi</h1>
-			<form class="form-horizontal" action="{% url 'add_corgi' %}" method="POST">
+			<form class="form-horizontal" action="{% url 'list_corgi' %}" method="POST">
   				<div class="form-group">
     				<label class="control-label col-sm-3" for="name">Corgi Name:</label>
     				<div class="col-sm-4">
@@ -27,11 +27,11 @@
   					<label class="control-label col-sm-3" for="age">Age:</label>
     				<div class="row">
     					<div class="col-sm-2">
-    					  <input name="years" type="number" class="form-control" min="0" max="12" placeholder="Years" required>
+    					  <input name="age_years" type="number" class="form-control" min="0" max="12" placeholder="Years" required>
     					  Years
     					</div>
    						<div class="col-sm-2">
-      						<input name="months" type="number" class="form-control" min="0" placeholder="Months" required>
+      						<input name="age_months" type="number" class="form-control" min="0" placeholder="Months" required>
       						Months
     					</div>
   					</div>
@@ -141,7 +141,7 @@
 				<div class="form-group" style="visibility:hidden;" id="price">
 					<label class="control-label col-sm-3" for="price">Price: </label>
     				<div class="col-sm-3">
-      					<input name="price" type="number" class="form-control" min="0" id="priceNum" placeholder="Enter a price">
+      					<input name="price" value="0" type="number" class="form-control" min="0" id="priceNum" placeholder="Enter a price">
     				</div>
 				</div>
 				<div class="form-group" style="visibility:hidden;" id="contact">

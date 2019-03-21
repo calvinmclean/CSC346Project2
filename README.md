@@ -15,3 +15,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 python3 manage.py shell # to interact with REPL
 ```
+
+
+TODO: notify after successfully adding corgi
+TODO: remove contact entry when adding corgi since we are using owner's email?
