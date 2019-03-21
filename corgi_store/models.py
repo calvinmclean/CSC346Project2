@@ -42,6 +42,7 @@ class Corgi(models.Model):
     state = models.CharField(max_length=120)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=300)
+    price = models.IntegerField(null=True, blank=True)
     objects = CorgiManager()
 
     def __str__(self):

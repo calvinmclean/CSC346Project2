@@ -21,18 +21,20 @@ def list_corgi(request):
     if request.method == "POST":
         user = request.user
         params = request.POST
-        price = params['price'] if 'price' in params else None
         corgi = Corgi.objects.create(
             name=params['name'],
-            age_years=params['years'],
-            age_months=params['months'],
+            age_years=params['age_years'],
+            age_months=params['age_months'],
             gender=params['gender'],
             coloring=params['coloring'],
             city=params['city'],
             state=params['state'],
-            owner=user,
-            description=params['description']
+            price=params['price'],
+            description=params['description'],
+            owner=user
         )
+        # TODO: I can do this once 'listradio' is fixed
+        # corgi = Corgi.objects.create(**params, owner=user)
         return redirect('browse_corgis')
     return render(request, 'list_corgi.html')
 
