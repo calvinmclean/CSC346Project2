@@ -6,6 +6,7 @@
 		<div class="browse-box">
 			<h1>{{ title }}</h1>
       {% for corgi in corgis %}
+      {% if title == 'Browse Corgis' or corgi.price %}
 			<div class="one-corgi">
 					<div class="favorite" id="favorite{{ corgi.id }}">
 					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ corgi.id }});"></span>
@@ -30,6 +31,7 @@
           {% endif %}
 					</div>
 			</div>
+      {% endif %}
       {% endfor %}
 		</div>
 	</div>
