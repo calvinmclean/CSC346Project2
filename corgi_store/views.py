@@ -22,7 +22,7 @@ def list_corgi(request):
 def add_corgi(request):
     print("POST =", request.POST)
     user = get_object_or_404(User, pk=1)
-    # user = request.user
+    user = request.user
     params = request.POST
     price = params['price'] if 'price' in params else None
     corgi = Corgi.objects.create(
