@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% include 'base.html' with user=user %}
 
 {% block content %}
 <div id="page" class="page">
@@ -19,13 +19,4 @@ browseCorgis()
     alert();
 }
 </script>
-{% endblock %}
-
-{% block login_info %}
-{% if not user.is_authenticated %}
-<li><a href="{% url 'sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-{% else %}
-<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-{% endif %}
 {% endblock %}
