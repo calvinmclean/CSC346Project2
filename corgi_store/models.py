@@ -40,9 +40,7 @@ class Corgi(models.Model):
     coloring = models.CharField(max_length=5, choices=COLOR_CHOICES, default='red')
     city = models.CharField(max_length=120)
     state = models.CharField(max_length=120)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=300)
-    price = models.IntegerField(null=True, blank=True)
     objects = CorgiManager()
 
     def __str__(self):
@@ -50,3 +48,9 @@ class Corgi(models.Model):
 
     def __repr__(self):
         return "<Corgi: {}>".format(' '.join(["{}='{}'".format(k,v) for k,v in vars(self).items() if k != '_state']))
+
+class Listing(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    corgi = models.ForeignKey(Corgi, on_delete=models.CASCADE)
+    price = models.IntegerField()
+    contact = models.CharField(max_length=300)

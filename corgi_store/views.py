@@ -12,10 +12,10 @@ def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
 
 def browse_corgis(request):
-    return render(request, 'browse.html', {'title': 'Browse Corgis', 'corgis': Corgi.objects.all()})
+    return render(request, 'browse.html', {'corgis': Corgi.objects.all()})
 
 def buy_corgi(request):
-    return render(request, 'browse.html', {'title': 'Buy a Corgi', 'corgis': Corgi.objects.all()})
+    return render(request, 'buy.html', {'listings': Listing.objects.all()})
 
 def list_corgi(request):
     if request.method == "POST":
@@ -29,12 +29,17 @@ def list_corgi(request):
             coloring=params['coloring'],
             city=params['city'],
             state=params['state'],
-            price=params['price'],
-            description=params['description'],
-            owner=user
+            description=params['description']
         )
         # TODO: I can do this once 'listradio' is fixed
         # corgi = Corgi.objects.create(**params, owner=user)
+        if int(params['price']):
+            listing = Listing.objects.create(
+                user=user,
+                corgi=corgi,
+                price=params['price'],
+                contact=params['contact']
+            )
         return redirect('browse_corgis')
     return render(request, 'list_corgi.html')
 
