@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from .models import *
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def home(request):
@@ -41,7 +42,12 @@ def list_corgi(request):
                 contact=params['contact']
             )
         return redirect('browse_corgis')
-    return render(request, 'list_corgi.html')
+        
+    if request.user.is_authenticated:
+    	return render(request, 'list_corgi.html')
+    else:
+    	form = AuthenticationForm()
+    	return render(request, 'registration/login.html', {'modal_message': 'Please login to list a corgi','form':form})
 
 def sign_up(request):
     if request.method == 'POST':

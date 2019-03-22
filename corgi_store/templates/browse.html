@@ -5,10 +5,10 @@
 	<div class="home">
 		<div class="browse-box">
 			<h1>Browse Corgis</h1>
-      {% for corgi in corgis %}
-			<div class="one-corgi">
+		    {% for corgi in corgis %}
+				<div class="one-corgi">
 					<div class="favorite" id="favorite{{ corgi.id }}">
-					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ corgi.id }});"></span>
+						<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ corgi.id }});"></span>
 					</div>
 					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
 					<div class="corgi-info">
@@ -19,11 +19,10 @@
 						<b>Location: </b>{{ corgi.city }}, {{ corgi.state }} <br>
 					</div>
 					<div class="corgi-description">
-						<b>Description:</b><br>
-            {{ corgi.description }}
+						<b>Description:</b><br>{{ corgi.description }}
 					</div>
-			</div>
-      {% endfor %}
+				</div>
+		    {% endfor %}
 		</div>
 	</div>
 </div>

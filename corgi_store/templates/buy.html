@@ -5,34 +5,30 @@
 	<div class="home">
 		<div class="browse-box">
 			<h1>Buy a Corgi</h1>
-      {% for listing in listings %}
-			<div class="one-corgi">
-					<div class="favorite" id="favorite{{ listing.corgi.id }}">
-					<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ listing.corgi.id }});"></span>
+		      {% for listing in listings %}
+					<div class="one-corgi">				
+						<div class="favorite" id="favorite{{ listing.corgi.id }}">
+							<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ listing.corgi.id }});"></span>
+						</div>
+						<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+						<div class="corgi-info">
+							<b>Name: </b>{{ listing.corgi.name }}<br>
+							<b>Gender: </b>{{ listing.corgi.gender }} <br>
+							<b>Age: </b>{{ listing.corgi.age_years }} years, {{ listing.corgi.age_months }} months <br>
+							<b>Coloring: </b>{{ listing.corgi.coloring }} <br>
+							<b>Location: </b>{{ listing.corgi.city }}, {{ listing.corgi.state }} <br>
+							<b>Owner: </b>{{ listing.user.first_name }} {{ listing.user.last_name }}<br>
+							<b>Price: </b>${{ listing.price }}<br>
+							<b>Contact: </b>{{ listing.contact }}
+						</div>
+						<div class="corgi-description">
+							<b>Description:</b><br> {{ listing.corgi.description }}
+						</div>
 					</div>
-					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
-					<div class="corgi-info">
-						<b>Name: </b>{{ listing.corgi.name }}<br>
-						<b>Gender: </b>{{ listing.corgi.gender }} <br>
-						<b>Age: </b>{{ listing.corgi.age_years }} years, {{ listing.corgi.age_months }} months <br>
-						<b>Coloring: </b>{{ listing.corgi.coloring }} <br>
-						<b>Location: </b>{{ listing.corgi.city }}, {{ listing.corgi.state }} <br>
-						<b>Owner: </b>{{ listing.user.first_name }} {{ listing.user.last_name }}
-					</div>
-					<div class="corgi-description">
-						<b>Description:</b><br>
-            {{ listing.corgi.description }}
-					</div>
-					<div style="float:left;text-align:left;margin-bottom:2%">
-					<b>Price: </b>${{ listing.price }}<br>
-					<b>Contact: </b>{{ listing.contact }}
-					</div>
-			</div>
-      {% endfor %}
-		</div>
+		      {% endfor %}
+    	</div>
 	</div>
 </div>
-
 <script>
 
 function favorite(id)

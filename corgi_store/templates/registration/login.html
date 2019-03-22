@@ -20,7 +20,34 @@
 				<button class="btn btn-default" type="submit" value="Login" />Login
 				<input type="hidden" name="next" value="{{ next }}" />
 			</form>
-			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+      </div>
+      <div class="modal-body">
+        Please login before listing a corgi for sale!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if modal_message %}
+<script>
+function test()
+{
+	$('#loginModal').modal('show');
+}
+
+window.onload=test;
+</script>
+{% endif %}
 {% endblock %}
