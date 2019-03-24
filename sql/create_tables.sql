@@ -15,18 +15,21 @@ create table dog
     id int(6) NOT NULL AUTO_INCREMENT,
     owner_id int(6),
     name varchar(64),
-    description varchar(255),
-    location varchar(64),
     gender varchar(12),
+    age int(6),
+    color varchar(64),
+    city varchar(64),
+    state varchar(64),
+    description varchar(255),
     PRIMARY KEY (id)
 );
 
 create table listing
 (
-    dog_id int(6),
-    owner_id int(6),
+    dog_id int(6) NOT NULL,
     price int(6),
-    PRIMARY KEY (dog_id, owner_id)
+    contact varchar(255),
+    PRIMARY KEY (dog_id)
 
 );
 
