@@ -6,6 +6,8 @@ Database:
     username: csc346
     password: coridata
 
+    to run sql files:
+    mysql -h <host> -P 3306 -u csc346 -p < file.sql
 
 Django:
 ```shell
