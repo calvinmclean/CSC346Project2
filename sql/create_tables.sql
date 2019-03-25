@@ -26,10 +26,11 @@ create table dog
 
 create table listing
 (
+    owner_id int(6) NOT NULL,
     dog_id int(6) NOT NULL,
     price int(6),
     contact varchar(255),
-    PRIMARY KEY (dog_id)
+    PRIMARY KEY (owner_id, dog_id)
 
 );
 
