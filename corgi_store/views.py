@@ -86,6 +86,7 @@ def favorite_corgi(request):
             Favorite.objects.create(user=request.user, corgi=corgi)
         else:
             fav[0].delete()
+    return redirect('browse_corgis')
 
 def close(request):
     if request.method == "POST":
@@ -94,4 +95,4 @@ def close(request):
         corgi = Listing.objects.get(corgi__id=id)
         corgi.open = False
         corgi.save()
-        return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
+    return redirect('user_profile')
