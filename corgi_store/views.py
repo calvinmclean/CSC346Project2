@@ -14,7 +14,11 @@ def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
 
 def browse_corgis(request):
-    return render(request, 'browse.html', {'corgis': Corgi.objects.all(), 'user': request.user})
+    return render(request, 'browse.html', {
+        'corgis': Corgi.objects.all(),
+        'user': request.user,
+        'favorites': [fav.corgi.id for fav in Favorite.objects.filter(user=request.user)]
+    })
 
 def buy_corgi(request):
     return render(request, 'buy.html', {'listings': Listing.objects.all()})
@@ -43,7 +47,7 @@ def list_corgi(request):
                 contact=params['contact']
             )
         return redirect('browse_corgis')
-        
+
     if request.user.is_authenticated:
     	return render(request, 'list_corgi.html')
     else:
@@ -68,3 +72,12 @@ def sign_up(request):
     else:
         form = SignUpForm()
     return render(request, 'sign_up.html', {'form': form})
+
+def favorite_corgi(request):
+    if request.method == 'POST':
+        corgi = Corgi.objects.get(id=request.POST.get('corgi'))
+        fav = Favorite.objects.filter(user=request.user, corgi=corgi)
+        if not fav:
+            Favorite.objects.create(user=request.user, corgi=corgi)
+        else:
+            fav[0].delete()

@@ -84,10 +84,10 @@
 		    				</div>
 	  					</div>
 					 </div>
-				
+
 					<div class="form-group">
 						 <div class="row">
-							 <div class="col-sm-3">	
+							 <div class="col-sm-3">
 		      					<select name="filter-age" class="form-control" id="filter-age" required>
 		      						<option selected >Greater than</option>
 		        					<option>Less than</option>
@@ -96,11 +96,11 @@
 		    				</div>
 							 <div class="input-group col-sm-3">
 					    		<input id="filter-year" type="number" class="form-control" name="filter-year" value=0 required>
-					   			<span class="input-group-addon">Years Old</span>	
+					   			<span class="input-group-addon">Years Old</span>
 			  				</div>
 			  			</div>
-			  		</div>	
-			  		
+			  		</div>
+
 			  		<div class="form-group">
 			  			<div class="col-sm-offset-3 col-sm-2">
 	      					<button type="submit" class="btn btn-default">Filter</button>
@@ -108,12 +108,16 @@
 			  		</div>
 				</form>
 			</div>
-			
-			
+
+
 		    {% for corgi in corgis %}
 				<div class="one-corgi">
 					<div class="favorite" id="favorite{{ corgi.id }}">
+            {% if corgi.id in favorites %}
+            <span class="glyphicon glyphicon-heart" style="color:red;" onclick="unfavorite({{ corgi.id }})"></span>
+            {% else %}
 						<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ corgi.id }});"></span>
+            {% endif %}
 					</div>
 					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
 					<div class="corgi-info">
@@ -138,12 +142,27 @@ function favorite(id)
 {
 	var heart = document.getElementById("favorite"+id);
 	heart.innerHTML = '<span class="glyphicon glyphicon-heart" style="color:red;" onclick="unfavorite('+id+')"></span>'
+  console.log("ajax");
+  $.post({
+        url: '/favorite/',
+        data: {
+          corgi: id
+        },
+        dataType: 'json',
+      });
 }
 
 function unfavorite(id)
 {
 	var heart = document.getElementById("favorite"+id);
 	heart.innerHTML = '<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite('+id+')"></span>'
+  $.post({
+        url: '/favorite/',
+        data: {
+          corgi: id
+        },
+        dataType: 'json',
+      });
 }
 
 </script>

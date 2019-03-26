@@ -54,3 +54,7 @@ class Listing(models.Model):
     corgi = models.ForeignKey(Corgi, on_delete=models.CASCADE)
     price = models.IntegerField()
     contact = models.CharField(max_length=300)
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    corgi = models.ForeignKey(Corgi, on_delete=models.CASCADE)

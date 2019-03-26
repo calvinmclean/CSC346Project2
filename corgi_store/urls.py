@@ -9,4 +9,5 @@ urlpatterns = [
     path('corgi/buy/', views.buy_corgi, name='buy_corgi'),
     path('list_corgi/', views.list_corgi, name='list_corgi'),
     path('sign_up/', views.sign_up, name='sign_up'),
+    path('favorite/', views.favorite_corgi, name='favorite'),
 ]
