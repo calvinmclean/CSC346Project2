@@ -18,10 +18,11 @@ def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
 
 def browse_corgis(request):
+    favorites = [fav.corgi.id for fav in Favorite.objects.filter(user=request.user)] if request.user.is_authenticated else []
     return render(request, 'browse.html', {
         'corgis': Corgi.objects.all(),
         'user': request.user,
-        'favorites': [fav.corgi.id for fav in Favorite.objects.filter(user=request.user)]
+        'favorites': favorites
     })
 
 def buy_corgi(request):
