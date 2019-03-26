@@ -12,7 +12,7 @@ def home(request):
 
 # change to be just users listings 
 def user_profile(request):
-	return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id)})
+	return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
 	
 def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
@@ -72,3 +72,13 @@ def sign_up(request):
     else:
         form = SignUpForm()
     return render(request, 'sign_up.html', {'form': form})
+    
+def close(request):
+	    if request.method == "POST":
+	        params = request.POST
+	        id = params['corgi_id']
+	        corgi = Listing.objects.get(corgi__id=id)
+	        corgi.open = False
+	        corgi.save()
+	        return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
+

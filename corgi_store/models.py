@@ -54,3 +54,4 @@ class Listing(models.Model):
     corgi = models.ForeignKey(Corgi, on_delete=models.CASCADE)
     price = models.IntegerField()
     contact = models.CharField(max_length=300)
+    open = models.BooleanField(default=True)

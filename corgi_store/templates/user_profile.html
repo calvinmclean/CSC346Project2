@@ -14,13 +14,18 @@
 						<b>Age: </b>{{ listing.corgi.age_years }} years, {{ listing.corgi.age_months }} months <br>
 						<b>Coloring: </b>{{ listing.corgi.coloring }} <br>
 						<b>Location: </b>{{ listing.corgi.city }}, {{ listing.corgi.state }} <br>
-						<b>Owner: </b>{{ listing.user.first_name }} {{ listing.user.last_name }}<br>
 						<b>Price: </b>${{ listing.price }}<br>
 						<b>Contact: </b>{{ listing.contact }}
 					</div>
 					<div class="corgi-description">
 						<b>Description:</b><br> {{ listing.corgi.description }}
 					</div>
+					<form class="form-horizontal" action="{% url 'close' %}" method="POST">
+						<input name="corgi_id" class="form-control" id="corgi-id" value={{ listing.corgi.id }} type="hidden">
+						<div class="form-group">
+							<button type="submit" class="btn btn-default close-btn">Close</button>
+						</div>
+					</form>
 				</div>
 		  	{% endfor %}
 		</div>
