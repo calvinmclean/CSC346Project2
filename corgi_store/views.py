@@ -21,7 +21,7 @@ def browse_corgis(request):
     return render(request, 'browse.html', {'corgis': Corgi.objects.all(), 'user': request.user})
 
 def buy_corgi(request):
-    return render(request, 'buy.html', {'listings': Listing.objects.all()})
+    return render(request, 'buy.html', {'listings': Listing.objects.filter(open=True)})
 
 def list_corgi(request):
     if request.method == "POST":
