@@ -21,6 +21,9 @@
 					        {% for error in field.errors %}
 					          <p style="color: red">{{ error }}</p>
 					        {% endfor %}
+						{% if integrity_error and field.name == "email" %}
+						  <p style="color: red">{{ integrity_error }}</p>
+						{% endif %}
 						</div>
 				 	</div>
 			    </div>

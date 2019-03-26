@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from .models import *
 from django.contrib.auth.forms import AuthenticationForm
+from django.db import IntegrityError
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -53,9 +54,11 @@ def sign_up(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            print(form.cleaned_data)
             username = form.cleaned_data.get('email')
+            try:
+                form.save()
+            except IntegrityError:
+                return render(request, 'sign_up.html', {'form': form, 'integrity_error': 'Email {} already in use.'.format(username)})
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             user.username = username
