@@ -10,6 +10,10 @@ from .models import *
 def home(request):
     return render(request, 'home.html')
 
+# change to be just users listings
+def user_profile(request):
+	return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
+
 def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})
 
@@ -21,7 +25,7 @@ def browse_corgis(request):
     })
 
 def buy_corgi(request):
-    return render(request, 'buy.html', {'listings': Listing.objects.all()})
+    return render(request, 'buy.html', {'listings': Listing.objects.filter(open=True)})
 
 def list_corgi(request):
     if request.method == "POST":
@@ -81,3 +85,12 @@ def favorite_corgi(request):
             Favorite.objects.create(user=request.user, corgi=corgi)
         else:
             fav[0].delete()
+
+def close(request):
+	    if request.method == "POST":
+	        params = request.POST
+	        id = params['corgi_id']
+	        corgi = Listing.objects.get(corgi__id=id)
+	        corgi.open = False
+	        corgi.save()
+	        return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})

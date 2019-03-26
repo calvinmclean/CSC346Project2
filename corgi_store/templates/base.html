@@ -28,7 +28,7 @@
       <li><a href="{% url 'sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       {% else %}
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.first_name }}</a></li>
+      <li><a href="{% url 'user_profile' %}"><span class="glyphicon glyphicon-user"></span> {{ user.first_name }}</a></li>
       <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       {% endif %}
     </ul>

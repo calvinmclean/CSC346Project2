@@ -10,4 +10,6 @@ urlpatterns = [
     path('list_corgi/', views.list_corgi, name='list_corgi'),
     path('sign_up/', views.sign_up, name='sign_up'),
     path('favorite/', views.favorite_corgi, name='favorite'),
+    path('user_profile/', views.user_profile, name='user_profile'),
+    path('user_profile/close', views.close, name='close'),
 ]
