@@ -88,10 +88,10 @@ def favorite_corgi(request):
             fav[0].delete()
 
 def close(request):
-	    if request.method == "POST":
-	        params = request.POST
-	        id = params['corgi_id']
-	        corgi = Listing.objects.get(corgi__id=id)
-	        corgi.open = False
-	        corgi.save()
-	        return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
+    if request.method == "POST":
+        params = request.POST
+        id = params['corgi_id']
+        corgi = Listing.objects.get(corgi__id=id)
+        corgi.open = False
+        corgi.save()
+        return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
