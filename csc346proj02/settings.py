@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
         'corgimarketplace.site',
         '172.31.50.133',
         'localhost'
+        '172.31.56.75'
 ]
 
 LOGIN_REDIRECT_URL = '/'

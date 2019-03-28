@@ -36,7 +36,7 @@ class Corgi(models.Model):
     name = models.CharField(max_length=120)
     age_years = models.IntegerField(default=0)
     age_months = models.IntegerField(default=0)
-    gender = models.CharField(max_length=1, choices=[('M', 'Male'), ('F', 'Female'), ('X', 'Other')], default='X')
+    gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female'), ('X', 'Other')], default='X')
     coloring = models.CharField(max_length=120, choices=COLOR_CHOICES, default='red')
     city = models.CharField(max_length=120)
     state = models.CharField(max_length=120)
