@@ -127,9 +127,6 @@
 			
 		      {% for listing in listings %}
 					<div class="one-corgi">				
-						<div class="favorite" id="favorite{{ listing.corgi.id }}">
-							<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite({{ listing.corgi.id }});"></span>
-						</div>
 						<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
 						<div class="corgi-info">
 							<b>Name: </b>{{ listing.corgi.name }}<br>
@@ -149,26 +146,5 @@
     	</div>
 	</div>
 </div>
-<script>
 
-function favorite(id)
-{
-	var heart = document.getElementById("favorite"+id);
-	heart.innerHTML = '<span class="glyphicon glyphicon-heart" style="color:red;" onclick="unfavorite('+id+')"></span>'
-}
-
-function unfavorite(id)
-{
-	var heart = document.getElementById("favorite"+id);
-	heart.innerHTML = '<span class="glyphicon glyphicon-heart-empty" style="color:red;" onclick="favorite('+id+')"></span>'
-}
-
-</script>
-
-<script>
-browseCorgis()
-{
-    alert();
-}
-</script>
 {% endblock %}
