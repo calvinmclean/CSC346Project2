@@ -12,6 +12,8 @@ Database:
 Django:
 ```shell
 pip3 install django
+sudo apt-get install python3-dev libmysqlclient-dev
+pip3 install mysqlclient
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
