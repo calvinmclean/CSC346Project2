@@ -165,4 +165,49 @@ def all_filter(request):
 		return render(request, 'browse.html', {'corgis': Corgi.objects.raw(query)})
 		
 def buy_filter(request):
-	return redirect('browse_corgis')
+	if request.method == 'POST':
+		params = request.POST
+		gender = params['filter-gender']
+		coloring = params['filter-coloring']
+		state = params['filter-state']
+		relation = params['filter-age']
+		age = params['filter-year']
+		lowPrice = params['filter-low-price']
+		highPrice = params['filter-high-price']
+		
+		query = "select * from (corgi_store_listing join corgi_store_corgi on corgi_store_listing.corgi_id=corgi_store_corgi.id) where open=1"
+		if(gender != "Any gender"):
+			query+= " and gender ='"
+			query+= gender
+			query+="'"
+			where_flag=True
+			
+		if(coloring != "Any coloring"):
+			query+=" and coloring='"
+			query+=coloring
+			query+="'"
+			
+		if(state != "Any state"):
+			query+=" and state='"
+			query+=state
+			query+="'"
+		
+		if(relation == "Greater than"):
+			query+=" and age_years >='"
+			
+		elif(relation == "Less than"):
+			query+=" and age_years <'"
+			
+		else:
+			query+=" and age_years ='"
+			
+		query+=age
+		query+="'"
+		
+		query+=" and price >= '"
+		query+= lowPrice
+		query+="' and price <='"
+		query+= highPrice
+		query+= "'"
+		
+		return render(request, 'buy.html', {'listings': Listing.objects.raw(query)})
