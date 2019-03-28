@@ -25,6 +25,10 @@ Currently hosted at:
 
 http://ec2-107-22-60-201.compute-1.amazonaws.com/
 
+and
+
+http://ec2-184-72-79-174.compute-1.amazonaws.com/
+
 
 TODO: notify after successfully adding corgi
 TODO: remove contact entry when adding corgi since we are using owner's email?
