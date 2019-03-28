@@ -25,7 +25,11 @@ SECRET_KEY = 'z74+nvn7u52a_5+4&o7vcdhj8w@1wczbwh_0)!^t#4uob21%n#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        'csc346-corgi-store-1777772867.us-east-1.elb.amazonaws.com',
+        'ec2-107-22-60-201.compute-1.amazonaws.com',
+        'ec2-184-72-79-174.compute-1.amazonaws.com',
+]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
