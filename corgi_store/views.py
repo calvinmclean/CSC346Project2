@@ -96,3 +96,73 @@ def close(request):
         corgi.open = False
         corgi.save()
     return redirect('user_profile')
+    
+def all_filter(request):
+	if request.method == 'POST':
+		params = request.POST
+		gender = params['filter-gender']
+		coloring = params['filter-coloring']
+		state = params['filter-state']
+		relation = params['filter-age']
+		age = params['filter-year']
+		
+		where_flag = False;
+		
+		query = "select * from corgi_store_corgi"
+		if(gender != "Any gender"):
+			query+= " where gender ='"
+			query+= gender
+			query+="'"
+			where_flag=True
+			
+		if(coloring != "Any coloring"):
+			if(where_flag):
+				query+=" and "
+			else:
+				query+=" where "
+				where_flag=True
+			query+="coloring='"
+			query+=coloring
+			query+="'"
+			
+		if(state != "Any state"):
+			if(where_flag):
+				query+=" and "
+			else:
+				query+=" where "
+				where_flag = True
+			query+="state='"
+			query+=state
+			query+="'"
+		
+		if(relation == "Greater than"):
+			if(where_flag):
+				query+=" and "
+			else:
+				query+=" where "
+				where_flag = True
+			query+="age_years >='"
+			
+		elif(relation == "Less than"):
+			if(where_flag):
+				query+=" and "
+			else:
+				query+=" where "
+				where_flag = True
+			query+="age_years <'"
+			
+		else:
+			if(where_flag):
+				query+=" and "
+			else:
+				query+=" where "
+				where_flag = True
+			query+="age_years ='"
+			
+		query+=age
+		query+="'"
+		
+		return render(request, 'browse.html', {'corgis': Corgi.objects.raw(query)})
+		
+def buy_filter(request):
+	return redirect('browse_corgis')

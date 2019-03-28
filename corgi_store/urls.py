@@ -12,4 +12,6 @@ urlpatterns = [
     path('favorite/', views.favorite_corgi, name='favorite'),
     path('user_profile/', views.user_profile, name='user_profile'),
     path('user_profile/close', views.close, name='close'),
+    path('corgi/all/filter', views.all_filter, name='all_filter'),
+    path('corgi/buy/filter', views.buy_filter, name='buy_filter'),
 ]
