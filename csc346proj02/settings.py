@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
         '184.72.79.174',
         'corgimarketplace.site',
         '172.31.50.133',
-        'localhost'
+        'localhost',
         '172.31.56.75'
 ]
 
