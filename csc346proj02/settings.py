@@ -32,7 +32,8 @@ ALLOWED_HOSTS = [
         'ec2-184-72-79-174.compute-1.amazonaws.com',
         '184.72.79.174',
         'corgimarketplace.site',
-        '172.31.50.133'
+        '172.31.50.133',
+        '172.31.56.75'
 ]
 
 LOGIN_REDIRECT_URL = '/'
