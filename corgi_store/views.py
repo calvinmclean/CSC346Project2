@@ -12,7 +12,7 @@ def home(request):
 
 # change to be just users listings
 def user_profile(request):
-	return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True )})
+	return render(request, 'user_profile.html', {'listings': Listing.objects.filter(user__id=request.user.id, open=True), 'favorites': Favorite.objects.filter(user__id=request.user.id)})
 
 def detail(request, corgi_id):
     return render(request, 'browse.html', {'corgis': [Corgi.objects.get(id=corgi_id)]})

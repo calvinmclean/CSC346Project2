@@ -6,7 +6,7 @@
 		<div class="browse-box">
 			<h1>Your Current Listings</h1>
 			{% for listing in listings %}
-				<div class="one-corgi">				
+				<div class="one-corgi">
 					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
 					<div class="corgi-info">
 						<b>Name: </b>{{ listing.corgi.name }}<br>
@@ -31,6 +31,29 @@
 		</div>
 		<div class="browse-box">
 			<h1>Your Favorites</h1>
+      {% for favorite in favorites %}
+        <div class="one-corgi">
+          <img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+          <div class="corgi-info">
+            <b>Name: </b>{{ favorite.corgi.name }}<br>
+            <b>Gender: </b>{{ favorite.corgi.gender }} <br>
+            <b>Age: </b>{{ favorite.corgi.age_years }} years, {{ favorite.corgi.age_months }} months <br>
+            <b>Coloring: </b>{{ favorite.corgi.coloring }} <br>
+            <b>Location: </b>{{ favorite.corgi.city }}, {{ favorite.corgi.state }} <br>
+            <b>Price: </b>${{ favorite.price }}<br>
+            <b>Contact: </b>{{ favorite.contact }}
+          </div>
+          <div class="corgi-description">
+            <b>Description:</b><br> {{ favorite.corgi.description }}
+          </div>
+          <form class="form-horizontal" action="{% url 'close' %}" method="POST">
+            <input name="corgi_id" class="form-control" id="corgi-id" value={{ favorite.corgi.id }} type="hidden">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default close-btn">Close</button>
+            </div>
+          </form>
+        </div>
+        {% endfor %}
 		</div>
 	</div>
 </div>
