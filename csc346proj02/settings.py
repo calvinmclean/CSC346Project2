@@ -28,7 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = [
         'csc346-corgi-store-1777772867.us-east-1.elb.amazonaws.com',
         'ec2-107-22-60-201.compute-1.amazonaws.com',
+        '107.22.60.201',
         'ec2-184-72-79-174.compute-1.amazonaws.com',
+        '184.72.79.174',
+        'corgimarketplace.site',
 ]
 
 LOGIN_REDIRECT_URL = '/'
