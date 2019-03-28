@@ -29,6 +29,10 @@ and
 
 http://ec2-184-72-79-174.compute-1.amazonaws.com/
 
+Load balancer:
+
+http://csc346-corgi-store-1777772867.us-east-1.elb.amazonaws.com/
+
 
 TODO: notify after successfully adding corgi
 TODO: remove contact entry when adding corgi since we are using owner's email?
