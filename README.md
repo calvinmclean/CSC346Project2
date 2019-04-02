@@ -36,3 +36,6 @@ http://csc346-corgi-store-1777772867.us-east-1.elb.amazonaws.com/
 
 TODO: notify after successfully adding corgi
 TODO: remove contact entry when adding corgi since we are using owner's email?
+
+docker build -t csc346 .
+docker run --name csc346 -p 80:8000 -td csc346:latest runserver 0.0.0.0:8000
