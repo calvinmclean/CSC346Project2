@@ -35,5 +35,5 @@ http://csc346-corgi-1956955297.us-east-1.elb.amazonaws.com/
 
 ```
 docker build -t csc346 .
-docker run --name csc346 -p 80:8000 -td csc346:latest runserver 0.0.0.0:8000
+docker run --name csc346 -p 80:8000 -v `pwd`:/root -td csc346:latest runserver 0.0.0.0:8000
 ```
