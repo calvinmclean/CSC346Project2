@@ -7,7 +7,7 @@
 			<h1>Your Current Listings</h1>
 			{% for listing in listings %}
 				<div class="one-corgi">
-					<img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+					<img src="/static/images/corgi_{{ listing.corgi.id }}.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
 					<div class="corgi-info">
 						<b>Name: </b>{{ listing.corgi.name }}<br>
 						<b>Gender: </b>{{ listing.corgi.gender }} <br>
@@ -33,7 +33,7 @@
 			<h1>Your Favorites</h1>
       {% for favorite in favorites %}
         <div class="one-corgi">
-          <img src="/static/images/corgi-browse.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
+          <img src="/static/images/corgi_{{ favorite.corgi.id }}.jpg" alt="Corgi home" class="img-thumbnail" width="15%" style="margin-top:3%">
           <div class="corgi-info">
             <b>Name: </b>{{ favorite.corgi.name }}<br>
             <b>Gender: </b>{{ favorite.corgi.gender }} <br>
