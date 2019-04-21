@@ -7,6 +7,10 @@
       		{% if form.errors %}
 				<p>Your username and password didn't match. Please try again.</p>
 			{% endif %}
+            <div>
+                <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+                <p><strong>-- OR --</strong></p>
+            </div>
 			<form class="form-horizontal" method="post">
 				{% csrf_token %}
 				<div class="form-group">
@@ -20,6 +24,7 @@
 				<button class="btn btn-default" type="submit" value="Login" />Login
 				<input type="hidden" name="next" value="{{ next }}" />
 			</form>
+
 		</div>
 	</div>
 </div>

@@ -96,7 +96,7 @@ def close(request):
         corgi.open = False
         corgi.save()
     return redirect('user_profile')
-    
+
 def all_filter(request):
 	if request.method == 'POST':
 		params = request.POST
@@ -105,16 +105,16 @@ def all_filter(request):
 		state = params['filter-state']
 		relation = params['filter-age']
 		age = params['filter-year']
-		
+
 		where_flag = False;
-		
+
 		query = "select * from corgi_store_corgi"
 		if(gender != "Any gender"):
 			query+= " where gender ='"
 			query+= gender
 			query+="'"
 			where_flag=True
-			
+
 		if(coloring != "Any coloring"):
 			if(where_flag):
 				query+=" and "
@@ -124,7 +124,7 @@ def all_filter(request):
 			query+="coloring='"
 			query+=coloring
 			query+="'"
-			
+
 		if(state != "Any state"):
 			if(where_flag):
 				query+=" and "
@@ -134,7 +134,7 @@ def all_filter(request):
 			query+="state='"
 			query+=state
 			query+="'"
-		
+
 		if(relation == "Greater than"):
 			if(where_flag):
 				query+=" and "
@@ -142,7 +142,7 @@ def all_filter(request):
 				query+=" where "
 				where_flag = True
 			query+="age_years >='"
-			
+
 		elif(relation == "Less than"):
 			if(where_flag):
 				query+=" and "
@@ -150,7 +150,7 @@ def all_filter(request):
 				query+=" where "
 				where_flag = True
 			query+="age_years <'"
-			
+
 		else:
 			if(where_flag):
 				query+=" and "
@@ -158,12 +158,12 @@ def all_filter(request):
 				query+=" where "
 				where_flag = True
 			query+="age_years ='"
-			
+
 		query+=age
 		query+="'"
-		
+
 		return render(request, 'browse.html', {'corgis': Corgi.objects.raw(query)})
-		
+
 def buy_filter(request):
 	if request.method == 'POST':
 		params = request.POST
@@ -174,40 +174,40 @@ def buy_filter(request):
 		age = params['filter-year']
 		lowPrice = params['filter-low-price']
 		highPrice = params['filter-high-price']
-		
+
 		query = "select * from (corgi_store_listing join corgi_store_corgi on corgi_store_listing.corgi_id=corgi_store_corgi.id) where open=1"
 		if(gender != "Any gender"):
 			query+= " and gender ='"
 			query+= gender
 			query+="'"
 			where_flag=True
-			
+
 		if(coloring != "Any coloring"):
 			query+=" and coloring='"
 			query+=coloring
 			query+="'"
-			
+
 		if(state != "Any state"):
 			query+=" and state='"
 			query+=state
 			query+="'"
-		
+
 		if(relation == "Greater than"):
 			query+=" and age_years >='"
-			
+
 		elif(relation == "Less than"):
 			query+=" and age_years <'"
-			
+
 		else:
 			query+=" and age_years ='"
-			
+
 		query+=age
 		query+="'"
-		
+
 		query+=" and price >= '"
 		query+= lowPrice
 		query+="' and price <='"
 		query+= highPrice
 		query+= "'"
-		
+
 		return render(request, 'buy.html', {'listings': Listing.objects.raw(query)})
