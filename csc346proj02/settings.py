@@ -97,11 +97,11 @@ DATABASES = {
     # }
     'default': {
           'ENGINE': 'django.db.backends.mysql',
-          'NAME': 'csc346',
-          'HOST': 'csc346.cgt0vfrj0f4b.us-east-2.rds.amazonaws.com',
+          'NAME': '',
+          'HOST': '',
           'PORT': '3306',
-          'USER': 'csc346',
-          'PASSWORD': 'corgidata'
+          'USER': '',
+          'PASSWORD': ''
     }
 }
 
