@@ -1,7 +1,6 @@
 from django.urls import include, path
 
 from . import views
-from webhook import *
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -15,5 +14,5 @@ urlpatterns = [
     path('user_profile/close', views.close, name='close'),
     path('corgi/all/filter', views.all_filter, name='all_filter'),
     path('corgi/buy/filter', views.buy_filter, name='buy_filter'),
-    path('webhook/', views.webhook)
+    path('webhook/', views.webhook, name='webhook')
 ]
