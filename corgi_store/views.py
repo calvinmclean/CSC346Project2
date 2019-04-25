@@ -216,7 +216,8 @@ def buy_filter(request):
 
 def webhook(request):
     repo = git.Repo("/root/CSC346Project2")
-    ref = request.POST['ref']
-    if ref == "refs/heads/{}".format(repo.active_branch.name):
-        repo.git.pull()
+    if request.method == 'POST' and 'ref' in request.POST.keys():
+        ref = request.POST['ref']
+        if ref == "refs/heads/{}".format(repo.active_branch.name):
+            repo.git.pull()
     return HttpResponse("Success")
