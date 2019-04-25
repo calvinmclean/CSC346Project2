@@ -41,13 +41,16 @@ class PayloadView(object):
         [head for head in self.repo.heads if head.name == "master"][0].checkout()
         # Checkout branch that commit is attached to
         ref = self.payload['ref']
-        print("Checking out ref {}".format(ref))
-        self.repo.remotes[0].fetch("{}:{}".format(ref, ref.split('/')[-1]))
-        [head for head in self.repo.heads if head.name == ref.split('/')[-1]][0].checkout()
-        # Checkout commit
-        commit = self.payload['head_commit']['id']
-        print("Checking out latest commit {}".format(commit))
-        self.repo.git.checkout(commit)
+        if ref == "refs/heads/{}".format(self.repo.active_branch.name):
+            self.repo.git.pull()
+        else:
+            print("Checking out ref {}".format(ref))
+            self.repo.remotes[0].fetch("{}:{}".format(ref, ref.split('/')[-1]))
+            [head for head in self.repo.heads if head.name == ref.split('/')[-1]][0].checkout()
+            # Checkout commit
+            commit = self.payload['head_commit']['id']
+            print("Checking out latest commit {}".format(commit))
+            self.repo.git.checkout(commit)
 
     @view_config(header="X-Github-Event:pull_request")
     def payload_pull_request(self):
