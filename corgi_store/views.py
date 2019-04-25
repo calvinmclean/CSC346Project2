@@ -5,7 +5,6 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.db import IntegrityError
 from .models import *
-from github import Github
 import git, os, subprocess, json
 
 # Create your views here.
