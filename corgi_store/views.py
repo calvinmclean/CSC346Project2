@@ -5,6 +5,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.db import IntegrityError
 from .models import *
+from github import Github
+import git, os, subprocess
 
 # Create your views here.
 def home(request):
@@ -211,3 +213,10 @@ def buy_filter(request):
 		query+= "'"
 
 		return render(request, 'buy.html', {'listings': Listing.objects.raw(query)})
+
+def webhook(request):
+    repo = git.Repo("/root/CSC346Project2")
+    ref = request.POST['ref']
+    if ref == "refs/heads/{}".format(repo.active_branch.name):
+        repo.git.pull()
+    return HttpResponse("Success")
