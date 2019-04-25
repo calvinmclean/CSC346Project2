@@ -1,7 +1,0 @@
-USERNAME = "calvinmclean"
-OWNER = "calvinmclean"
-PERSONAL_ACCESS_TOKEN = ""
-EVENTS = ["push", "pull_request"]
-HOST = ""
-REPOS = ["CSC346Project2"]
-BASE_DIR = "/root"
